@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommandAPI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,11 @@ namespace CommandAPI
         {
             //SECTION 1. Add code below
             services.AddControllers();
+            //Add the code below
+            services.AddScoped<ICommandAPIRepo, MockCommandAPIRepo>();
+            // Add framework services SUGERENCIA QUE SIRVIÖ !!!!! >>>
+            services.AddMvc()
+                    .AddControllersAsServices();      // <---- Super important
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
